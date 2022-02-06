@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"github.com/gmlalfjr/go-clean-architecture-microservices/users_service/entity"
 	"github.com/gmlalfjr/go-clean-architecture-microservices/users_service/exception"
 	"github.com/gmlalfjr/go-clean-architecture-microservices/users_service/repository"
@@ -67,7 +68,7 @@ func (u UserServiceImpl) Login( request *web.UserRequestLogin) (*web.UserRespons
 	}
 	var userResponse web.UserResponseLogin
 	generateToken, errGenerate := userResponse.GenerateToken(map[string]string{
-		"id": string(rune(data.Id)),
+		"id": fmt.Sprint(data.Id),
 		"email": data.Email,
 	})
 	if errGenerate != nil {

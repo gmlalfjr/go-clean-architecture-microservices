@@ -12,7 +12,6 @@ type UserResponseLogin struct {
 }
 
 func (u *UserResponseLogin) GenerateToken(data map[string] string) (*UserResponseLogin, *exception.ErrorResponse) {
-
 	generateToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"id":  data["id"],
 		"email": data["email"],
